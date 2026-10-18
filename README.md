@@ -2,7 +2,22 @@
 
 A learning-and-creating website for a 4-year-old. It's plain HTML, CSS and JavaScript, so there's nothing to install or build.
 
-## How to open it
+## Live site
+
+**https://pabloresgo.github.io/wonder-world/**, hosted free on GitHub Pages from the `main` branch of
+github.com/pabloresgo/wonder-world.
+
+To update it after a change:
+
+```bash
+git add -A
+git commit -m "Describe the change"
+git push
+```
+
+GitHub rebuilds the site in about a minute. If the tablet still shows the old version, reload the page.
+
+## How to open it locally
 
 Run a tiny local server from this folder (Python is already installed):
 
