@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Make a Creature</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/game.css">
+  <link rel="stylesheet" href="creature.css">
+</head>
+<body class="game">
+  <header class="topbar">
+    <a class="icon-btn" href="../../index.html" aria-label="Home">🏠</a>
+    <h1 class="page-title">🐲 Make a Creature</h1>
+    <div class="topbar-right">
+      <button class="icon-btn small" id="soundBtn" aria-label="Turn sound off">🔈</button>
+      <div class="star-count">⭐ 0</div>
+    </div>
+  </header>
+
+  <main class="creature-main">
+    <section class="creature-stage">
+      <button class="creature-poke" id="poke" aria-label="Say hello"></button>
+      <div class="name-plate">
+        <span id="name"></span>
+        <button class="icon-btn small" id="renameBtn" aria-label="New name">🎲</button>
+      </div>
+      <div class="stage-actions">
+        <button class="act-btn surprise" id="randomBtn">🎲 Surprise!</button>
+        <button class="act-btn save" id="saveBtn">💾 Save</button>
+      </div>
+    </section>
+
+    <section class="parts-panel">
+      <nav class="part-tabs" id="tabs"></nav>
+      <div class="options" id="options"></div>
+    </section>
+  </main>
+
+  <section class="my-creatures">
+    <h2>🏡 My creatures</h2>
+    <div class="creature-strip" id="strip"></div>
+  </section>
+
+  <script src="../../js/common/storage.js"></script>
+  <script src="../../js/common/catalog.js"></script>
+  <script src="../../js/common/progress.js"></script>
+  <script src="../../js/common/speech.js"></script>
+  <script src="../../js/common/sounds.js"></script>
+  <script src="../../js/common/ui.js"></script>
+  <script src="../../js/common/creature-art.js"></script>
+  <script src="creature.js"></script>
+</body>
+</html>

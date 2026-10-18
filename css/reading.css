@@ -1,0 +1,33 @@
+/* Shared look for the Reading Island games. */
+.reading {
+  background:
+    radial-gradient(circle at 100% 100%, #e5f8e8 0, transparent 40%),
+    var(--bg);
+}
+
+/* The big thing in the middle: a letter, a picture or a letter sequence. */
+.show {
+  min-width: 180px; min-height: 160px;
+  padding: 10px 28px;
+  border-radius: 36px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  font-size: clamp(80px, 20vw, 140px);
+  font-weight: 700;
+  line-height: 1.1;
+  display: inline-flex; align-items: center; justify-content: center; gap: .15em;
+}
+.show.bounce { animation: show-bounce .5s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes show-bounce { 0% { transform: scale(.85); } 100% { transform: none; } }
+.show .seq { color: var(--ink-soft); }
+.show .lower { color: var(--blue); }
+.show .ear { font-size: .8em; }
+
+.letter-choices .choice {
+  width: 132px; height: 132px;
+  font-size: 76px;
+  line-height: 1;
+}
+.letter-choices .choice.pic { font-size: 70px; }
+.choice.glow { animation: glow 1s ease-in-out infinite; }
+@keyframes glow { 50% { box-shadow: 0 0 0 8px var(--yellow), var(--shadow); } }

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ten Frames</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/game.css">
+  <link rel="stylesheet" href="ten-frame.css">
+</head>
+<body class="game">
+  <header class="topbar">
+    <a class="icon-btn" href="../../index.html" aria-label="Home">🏠</a>
+    <nav class="levels" id="levels" aria-label="Levels"></nav>
+    <div class="topbar-right">
+      <button class="icon-btn" id="repeatBtn" aria-label="Say it again">🔊</button>
+      <button class="icon-btn small" id="soundBtn" aria-label="Turn sound off">🔈</button>
+      <div class="star-count">⭐ 0</div>
+    </div>
+  </header>
+
+  <main class="stage">
+    <section class="prompt">
+      <div class="eq" id="eq"></div>
+      <div class="bubble" id="bubble" aria-live="polite"></div>
+    </section>
+
+    <section class="board" id="board"></section>
+    <div class="readout" id="readout"></div>
+
+    <section class="controls" id="controls">
+      <div class="tray" id="tray" role="button" tabindex="0" aria-label="Add a counter">
+        <span class="counter blue t1"></span>
+        <span class="counter blue t2"></span>
+        <span class="counter blue t3"></span>
+        <span class="hand">👆</span>
+      </div>
+      <button class="big-btn check" id="checkBtn" aria-label="Check">✔</button>
+      <button class="big-btn next" id="nextBtn" aria-label="Next" hidden>➜</button>
+    </section>
+
+    <section class="choices" id="choices" hidden></section>
+  </main>
+
+  <div class="overlay" id="startOverlay">
+    <div class="overlay-card">
+      <div class="mascot">🦉</div>
+      <h1>Ten Frames</h1>
+      <button class="play-btn" id="playBtn" aria-label="Play">▶</button>
+    </div>
+  </div>
+
+  <script src="../../js/common/storage.js"></script>
+  <script src="../../js/common/catalog.js"></script>
+  <script src="../../js/common/progress.js"></script>
+  <script src="../../js/common/speech.js"></script>
+  <script src="../../js/common/sounds.js"></script>
+  <script src="../../js/common/ui.js"></script>
+  <script src="../../js/common/game.js"></script>
+  <script src="ten-frame.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* Rhyme Time. Shared reading styles live in css/reading.css. */
+
+.rhyme-top {
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  flex-wrap: wrap;
+  min-height: 170px;
+}
+.rhyme-top .q { font-size: 64px; font-weight: 700; }
+
+/* A picture with its word underneath */
+.pic-card {
+  width: 136px; min-height: 156px;
+  padding: 10px 8px;
+  border-radius: 28px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  transition: transform .1s, background .2s, opacity .2s;
+}
+.pic-card .pic { font-size: 70px; line-height: 1; }
+.pic-card .word { font-size: 24px; font-weight: 600; }
+.pic-card:active { transform: scale(.95); }
+.pic-card.big { width: 170px; min-height: 186px; }
+.pic-card.big .pic { font-size: 92px; }
+.pic-card.big .word { font-size: 30px; }
+.pic-card.right, .pic-card.found { background: #e3f7ea; box-shadow: inset 0 0 0 4px var(--green), var(--shadow); }
+.pic-card.wrong { opacity: .35; }
+.pic-card.glow { animation: glow 1s ease-in-out infinite; }
+.pic-card.talk .pic { animation: talk .5s ease-in-out; }
+@keyframes talk { 50% { transform: scale(1.15) rotate(-6deg); } }
+
+.rhyme-options { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; max-width: 760px; }
+
+/* Level 1: thumbs up / thumbs down */
+.yn {
+  width: 150px; height: 120px;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 58px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  line-height: 1;
+}
+.yn small { font-size: 20px; font-weight: 700; margin-top: 6px; }
+.yn.yes { background: var(--green); box-shadow: 0 8px 0 var(--green-dark); }
+.yn.no { background: var(--orange); box-shadow: 0 8px 0 var(--orange-dark); }
+.yn:active { transform: translateY(6px); box-shadow: 0 2px 0 var(--shadow-color); }
+.yn.wrong { opacity: .35; }
+.yn.glow { animation: glow 1s ease-in-out infinite; }
+
+/* Level 4: the little rhyme with a gap */
+.couplet {
+  margin: 0;
+  max-width: 640px;
+  padding: 18px 26px;
+  border-radius: 28px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  font-size: clamp(28px, 6vw, 44px);
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+.couplet .gap {
+  display: inline-block;
+  min-width: 2.6em;
+  border-bottom: 5px dashed var(--purple);
+  color: var(--green);
+}
+
+.counter-chip {
+  font-size: 26px; font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}

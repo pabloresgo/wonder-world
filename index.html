@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wonder World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="home">
+  <header class="home-header">
+    <div>
+      <h1><span class="rainbow">Wonder World</span> 🌈</h1>
+      <p class="greeting" id="greeting" hidden></p>
+    </div>
+    <div class="tools">
+      <button class="icon-btn small" id="soundBtn" aria-label="Turn sound off">🔈</button>
+      <div class="star-count">⭐ 0</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="island math">
+      <h2><span class="emoji">🏝️</span> Math Island</h2>
+      <div class="cards">
+        <a class="card" href="games/ten-frame/index.html" data-say="Ten Frames">
+          <div class="mini-frame" aria-hidden="true">
+            <span class="on red"></span><span class="on red"></span><span class="on red"></span><span class="on"></span><span class="on"></span>
+            <span class="on"></span><span class="on"></span><span></span><span></span><span></span>
+          </div>
+          Ten Frames
+        </a>
+        <a class="card" href="games/hopper/index.html">
+          <span class="art">🐸</span>
+          Hop the Line
+        </a>
+        <a class="card" href="games/balance/index.html">
+          <span class="art">⚖️</span>
+          Balance It
+        </a>
+      </div>
+    </section>
+
+    <section class="island reading">
+      <h2><span class="emoji">📚</span> Reading Island</h2>
+      <div class="cards">
+        <a class="card" href="games/letters/index.html">
+          <span class="art letters-art">Aa</span>
+          Letter Land
+        </a>
+        <a class="card" href="games/words/index.html">
+          <span class="art">🐱</span>
+          Word Builder
+        </a>
+        <a class="card" href="games/rhyme/index.html">
+          <span class="art">🎵</span>
+          Rhyme Time
+        </a>
+      </div>
+    </section>
+
+    <section class="island science">
+      <h2><span class="emoji">🔬</span> Science Island</h2>
+      <div class="cards">
+        <a class="card" href="games/animals/index.html">
+          <span class="art">🦁</span>
+          Animal World
+        </a>
+        <a class="card" href="games/space/index.html">
+          <span class="art">🚀</span>
+          Space Explorer
+        </a>
+        <a class="card" href="games/weather/index.html">
+          <span class="art">⛅</span>
+          Weather Watch
+        </a>
+      </div>
+    </section>
+
+    <section class="island create">
+      <h2><span class="emoji">🎨</span> Create Studio</h2>
+      <div class="cards">
+        <a class="card" href="games/draw/index.html">
+          <span class="art">🖍️</span>
+          Draw
+        </a>
+        <a class="card" href="games/creature/index.html">
+          <span class="art">🐲</span>
+          Make a Creature
+        </a>
+        <a class="card" href="games/story/index.html">
+          <span class="art">📖</span>
+          Story Maker
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="home-footer">
+    <a href="parent/index.html">👪 Grown-ups corner</a>
+  </footer>
+
+  <script src="js/common/storage.js"></script>
+  <script src="js/common/speech.js"></script>
+  <script src="js/common/sounds.js"></script>
+  <script src="js/common/ui.js"></script>
+  <script>
+    KW.ui.updateStars();
+    KW.ui.bindSoundToggle(document.getElementById('soundBtn'));
+
+    const name = KW.store.get('childName', '');
+    if (name) {
+      const g = document.getElementById('greeting');
+      g.textContent = `Hi, ${name}! 👋`;
+      g.hidden = false;
+    }
+
+    // "Coming soon" cards just talk back for now.
+    document.querySelectorAll('button.card').forEach(card => {
+      card.addEventListener('click', () => {
+        KW.sound.unlock();
+        KW.sound.oops();
+        KW.speech.say(card.dataset.say);
+      });
+    });
+  </script>
+</body>
+</html>

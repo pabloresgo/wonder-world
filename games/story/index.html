@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Story Maker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/game.css">
+  <link rel="stylesheet" href="story.css">
+</head>
+<body class="game">
+  <header class="topbar">
+    <a class="icon-btn" href="../../index.html" aria-label="Home">🏠</a>
+    <h1 class="page-title">📖 Story Maker</h1>
+    <div class="topbar-right">
+      <button class="icon-btn" id="repeatBtn" aria-label="Say it again">🔊</button>
+      <button class="icon-btn small" id="soundBtn" aria-label="Turn sound off">🔈</button>
+      <div class="star-count">⭐ 0</div>
+    </div>
+  </header>
+
+  <main class="stage">
+    <!-- Step 1–4: choose the pieces of the story -->
+    <section class="builder" id="builder">
+      <div class="picked" id="picked"></div>
+      <h2 class="question" id="question"></h2>
+      <div class="cards-grid" id="choices"></div>
+      <div class="builder-nav">
+        <button class="icon-btn" id="backBtn" aria-label="Back">⬅️</button>
+        <button class="big-btn tell" id="tellBtn" hidden>📖 Tell my story!</button>
+      </div>
+    </section>
+
+    <!-- The picture book -->
+    <section class="book" id="book" hidden>
+      <div class="scene" id="scene"></div>
+      <p class="page-text" id="pageText"></p>
+      <div class="book-nav">
+        <button class="icon-btn" id="prevBtn" aria-label="Previous page">⬅️</button>
+        <span class="page-dots" id="dots"></span>
+        <button class="big-btn next" id="nextPageBtn" aria-label="Next page">➜</button>
+      </div>
+      <div class="book-end" id="bookEnd" hidden>
+        <button class="act-btn again" id="againBtn">🔁 Read again</button>
+        <button class="act-btn new" id="newBtn">✨ New story</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="startOverlay">
+    <div class="overlay-card">
+      <div class="mascot">📖</div>
+      <h1>Story Maker</h1>
+      <button class="play-btn" id="playBtn" aria-label="Play">▶</button>
+    </div>
+  </div>
+
+  <script src="../../js/common/storage.js"></script>
+  <script src="../../js/common/catalog.js"></script>
+  <script src="../../js/common/progress.js"></script>
+  <script src="../../js/common/speech.js"></script>
+  <script src="../../js/common/sounds.js"></script>
+  <script src="../../js/common/ui.js"></script>
+  <script src="../../js/common/game.js"></script>
+  <script src="../../js/common/creature-art.js"></script>
+  <script src="story.js"></script>
+</body>
+</html>

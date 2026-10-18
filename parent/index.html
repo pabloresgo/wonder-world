@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Grown-ups Corner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="parent.css">
+</head>
+<body class="parent" data-no-break>
+  <header class="parent-header">
+    <a class="icon-btn" href="../index.html" aria-label="Home">🏠</a>
+    <h1>👪 Grown-ups Corner</h1>
+  </header>
+
+  <main class="parent-main" id="main" hidden>
+    <section class="tiles" id="tiles" aria-label="Summary"></section>
+
+    <section class="panel" id="tipsPanel">
+      <h2>💡 What to try next</h2>
+      <ul class="tips" id="tips"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>📅 Last 14 days</h2>
+      <p class="sub" id="activitySub"></p>
+      <div class="chart" id="chart"></div>
+      <details class="table-view">
+        <summary>Show as a table</summary>
+        <table id="activityTable"></table>
+      </details>
+    </section>
+
+    <section class="panel">
+      <h2>🎮 Learning games</h2>
+      <p class="sub">The bar shows how often he got it right the first time, with no wrong answers or hints (last 10 tries).</p>
+      <div id="games"></div>
+    </section>
+
+    <section class="panel">
+      <h2>🎨 Create Studio</h2>
+      <div class="made" id="made"></div>
+    </section>
+
+    <section class="panel">
+      <h2>⚙️ Settings</h2>
+      <form class="settings" id="settings" onsubmit="return false">
+        <label class="row">
+          <span>Child's name<small>Shown on the home page and as a hero in Story Maker</small></span>
+          <input type="text" id="childName" maxlength="20" autocomplete="off" placeholder="e.g. Leo">
+        </label>
+        <div class="row">
+          <span>Voice speed</span>
+          <div class="seg" role="radiogroup" aria-label="Voice speed">
+            <label><input type="radio" name="voice" value="normal"> Normal</label>
+            <label><input type="radio" name="voice" value="slow"> Slower</label>
+          </div>
+        </div>
+        <div class="row">
+          <span>Sound and voice</span>
+          <div class="seg" role="radiogroup" aria-label="Sound">
+            <label><input type="radio" name="sound" value="on"> On</label>
+            <label><input type="radio" name="sound" value="off"> Off</label>
+          </div>
+        </div>
+        <label class="row">
+          <span>Break reminder<small>A friendly "time for a break" screen after this much play</small></span>
+          <select id="breakMinutes">
+            <option value="0">Off</option>
+            <option value="15">15 minutes</option>
+            <option value="20">20 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="45">45 minutes</option>
+          </select>
+        </label>
+        <p class="saved-note" id="savedNote" aria-live="polite"></p>
+      </form>
+      <div class="danger">
+        <div>
+          <strong>Start over</strong>
+          <small>Clears stars and progress. Drawings and creatures are kept.</small>
+        </div>
+        <button class="reset-btn" id="resetBtn">Reset progress</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>🤝 Playing together</h2>
+      <ul class="ideas">
+        <li><strong>Ask "how do you know?"</strong> after an answer, right or wrong. Explaining is where the thinking happens.</li>
+        <li><strong>Ten Frames:</strong> before checking, ask "how many more do we need to make 10?"</li>
+        <li><strong>Hop the Line:</strong> on the Guess level, let him say his guess out loud first, then watch the frog together.</li>
+        <li><strong>Balance It:</strong> when it tips, ask "which side is heavier? What could we change?"</li>
+        <li><strong>Story Maker:</strong> stop on a page and ask what he thinks happens next.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Grown-up check -->
+  <div class="overlay gate" id="gate">
+    <div class="overlay-card">
+      <div class="mascot">🔒</div>
+      <h2>Grown-ups only</h2>
+      <p class="gate-q" id="gateQ"></p>
+      <div class="gate-display" id="gateDisplay" aria-live="polite"></div>
+      <div class="pad" id="pad"></div>
+      <a class="gate-back" href="../index.html">← Back to games</a>
+    </div>
+  </div>
+
+  <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+
+  <script src="../js/common/storage.js"></script>
+  <script src="../js/common/catalog.js"></script>
+  <script src="../js/common/progress.js"></script>
+  <script src="../js/common/speech.js"></script>
+  <script src="../js/common/sounds.js"></script>
+  <script src="../js/common/ui.js"></script>
+  <script src="parent.js"></script>
+</body>
+</html>

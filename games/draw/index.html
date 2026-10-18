@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Draw</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/game.css">
+  <link rel="stylesheet" href="draw.css">
+</head>
+<body class="game draw-page">
+  <header class="topbar">
+    <a class="icon-btn" href="../../index.html" aria-label="Home">🏠</a>
+    <h1 class="page-title">🖍️ Draw</h1>
+    <div class="topbar-right">
+      <button class="icon-btn" id="galleryBtn" aria-label="My drawings">🖼️</button>
+      <button class="icon-btn small" id="soundBtn" aria-label="Turn sound off">🔈</button>
+      <div class="star-count">⭐ 0</div>
+    </div>
+  </header>
+
+  <div class="toolbar" id="toolbar">
+    <div class="tool-group" id="tools">
+      <button class="tool active" data-tool="brush" aria-label="Brush">🖌️</button>
+      <button class="tool" data-tool="rainbow" aria-label="Rainbow brush">🌈</button>
+      <button class="tool" data-tool="stamp" aria-label="Stamps">⭐</button>
+      <button class="tool" data-tool="fill" aria-label="Paint bucket">🪣</button>
+      <button class="tool" data-tool="eraser" aria-label="Eraser">🧽</button>
+    </div>
+    <div class="tool-group" id="sizes">
+      <button class="size" data-size="0" aria-label="Thin"><span></span></button>
+      <button class="size active" data-size="1" aria-label="Medium"><span></span></button>
+      <button class="size" data-size="2" aria-label="Thick"><span></span></button>
+    </div>
+    <div class="tool-group">
+      <button class="tool" id="undoBtn" aria-label="Undo">↩️</button>
+      <button class="tool" id="clearBtn" aria-label="Start a new picture">🆕</button>
+      <button class="tool save" id="saveBtn" aria-label="Save my drawing">💾</button>
+    </div>
+  </div>
+
+  <main class="canvas-wrap" id="canvasWrap">
+    <canvas id="canvas"></canvas>
+  </main>
+
+  <div class="palette" id="palette"></div>
+  <div class="palette stamps" id="stamps" hidden></div>
+
+  <div class="overlay" id="gallery" hidden>
+    <div class="gallery-card">
+      <div class="gallery-head">
+        <h2>🖼️ My drawings</h2>
+        <button class="icon-btn" id="closeGallery" aria-label="Close">✖️</button>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </div>
+
+  <script src="../../js/common/storage.js"></script>
+  <script src="../../js/common/catalog.js"></script>
+  <script src="../../js/common/progress.js"></script>
+  <script src="../../js/common/speech.js"></script>
+  <script src="../../js/common/sounds.js"></script>
+  <script src="../../js/common/ui.js"></script>
+  <script src="draw.js"></script>
+</body>
+</html>

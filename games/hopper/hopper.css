@@ -1,0 +1,141 @@
+/* Number Line Hopper. Shared game layout lives in css/game.css.
+   Line geometry (px from the top of .line): water line at 150px,
+   hop arcs drawn in the 0–150px band above it. */
+
+.line-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+}
+
+.line {
+  --pad: clamp(30px, 7vw, 54px);
+  position: relative;
+  height: 210px;
+  min-width: 100%;
+}
+.line.mid { --pad: 30px; min-width: 720px; }
+.line.big { min-width: 1040px; }
+
+.arcs {
+  position: absolute; left: 0; top: 0;
+  width: 100%; height: 150px;
+  overflow: visible;
+  pointer-events: none;
+}
+.arc {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset .45s linear;
+}
+.arc.small { stroke: var(--blue); stroke-dasharray: 1; }
+.arc.big { stroke: var(--green); stroke-width: 6; }
+.arc.drawn { stroke-dashoffset: 0; }
+
+.track {
+  position: absolute; left: 2%; right: 2%; top: 146px;
+  height: 8px;
+  border-radius: 4px;
+  background: #7cc4ee;
+}
+
+/* Lily pads (0–10 and 0–20 lines) */
+.pad {
+  position: absolute; top: calc(150px - var(--pad) / 2);
+  width: var(--pad); height: var(--pad);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #8ee3a6, #3fb36a 70%);
+  box-shadow: 0 4px 0 #2b8a4f;
+  cursor: default;
+  transition: box-shadow .2s, transform .2s;
+}
+.pad-label {
+  position: absolute; left: 50%; top: calc(100% + 6px);
+  transform: translateX(-50%);
+  font-size: clamp(18px, 3.6vw, 26px);
+  font-weight: 600;
+  color: var(--ink);
+}
+.line.mid .pad-label { font-size: 18px; }
+.line.guessing .pad { cursor: pointer; }
+.line.guessing .pad:hover { transform: translateX(-50%) scale(1.12); }
+.pad.picked { box-shadow: 0 0 0 6px var(--purple), 0 4px 0 #2b8a4f; }
+.pad.landed { box-shadow: 0 0 0 6px var(--yellow), 0 4px 0 #2b8a4f; }
+.pad.picked .pad-label, .pad.landed .pad-label { color: var(--purple); font-weight: 700; }
+
+/* Ruler ticks (0–100 line) */
+.tick {
+  position: absolute; top: 150px;
+  width: 2px; height: 10px;
+  transform: translate(-50%, -50%);
+  background: var(--ink-soft);
+}
+.tick.mid { height: 18px; }
+.tick.major { width: 4px; height: 28px; background: var(--ink); }
+.tick span {
+  position: absolute; left: 50%; top: 32px;
+  transform: translateX(-50%);
+  font-size: 20px; font-weight: 700;
+}
+
+/* The frog */
+.frog {
+  position: absolute; top: 58px;
+  width: 64px; margin-left: -32px;
+  display: flex; flex-direction: column; align-items: center;
+  pointer-events: none;
+  z-index: 2;
+}
+.frog-body { font-size: 50px; line-height: 56px; }
+.frog.hopping .frog-body { animation: jump .48s ease-out; }
+.frog.hopping.big .frog-body { animation-name: bigjump; }
+@keyframes jump    { 50% { transform: translateY(-58px) rotate(-8deg); } }
+@keyframes bigjump { 50% { transform: translateY(-112px) rotate(-12deg); } }
+
+.tag {
+  height: 30px; min-width: 40px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--purple);
+  color: #fff;
+  font-size: 20px; font-weight: 700;
+  display: grid; place-items: center;
+  opacity: 0;
+  transform: scale(.6);
+  transition: opacity .2s, transform .2s;
+}
+.frog.tag-on .tag { opacity: 1; transform: scale(1); }
+
+/* Hop buttons with footprints */
+.steps { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.step-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.hop-btn {
+  height: 92px; min-width: 132px;
+  padding: 0 24px;
+  border-radius: 46px;
+  color: #fff;
+  font-size: 40px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: transform .08s, opacity .2s;
+}
+.step-row.small .hop-btn { background: var(--blue); box-shadow: 0 8px 0 var(--blue-dark); }
+.step-row.big .hop-btn   { background: var(--green); box-shadow: 0 8px 0 var(--green-dark); min-width: 160px; }
+.hop-btn:active { transform: translateY(6px); box-shadow: 0 2px 0 var(--shadow-color); }
+.hop-btn:disabled { opacity: .35; cursor: default; }
+
+.prints { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; max-width: 420px; }
+.print {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 3px dashed var(--blue);
+  display: grid; place-items: center;
+  font-size: 22px;
+}
+.step-row.big .print { width: 52px; height: 52px; border-color: var(--green); }
+.print.on { border-style: solid; background: #fff; }
