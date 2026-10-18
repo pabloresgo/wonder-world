@@ -47,6 +47,15 @@ KW.ui = {
   }
 };
 
+// Offline support (see sw.js at the site root, two folders up from this file).
+(function registerOffline() {
+  if (!('serviceWorker' in navigator) || location.protocol === 'file:') return;
+  const swUrl = new URL('../../sw.js', document.currentScript.src);
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(swUrl).catch(() => { /* offline mode just won't be available */ });
+  });
+})();
+
 // Break reminder: after the minutes chosen in the parent corner, a friendly
 // "time for a break" screen appears. It counts play time in this browser tab.
 (function breakReminder() {

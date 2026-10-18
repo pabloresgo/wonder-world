@@ -1,0 +1,3 @@
+#!/bin/sh
+# Keep the offline file list in sw.js up to date on every commit.
+python tools/update-offline-list.py > /dev/null && git add sw.js
